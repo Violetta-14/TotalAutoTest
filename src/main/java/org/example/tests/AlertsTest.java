@@ -1,15 +1,14 @@
 package org.example.tests;
 
-import org.example.Pages.AlertsPage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.time.Duration;
-
+//import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
+//
+//import java.time.Duration;
+//
 //public class AlertsTest extends BaseTest{
-
+//
 //    @Test
 //    public void touchAlert(){
 //        homePage.redirectToSection("Alerts");
@@ -24,8 +23,8 @@ import java.time.Duration;
 //        alertsPage.setTextToAlert(inputText);
 //        alertsPage.confirmAlert();
 //
-//        WebDriverWait wait = new WebDriverWait(getWebDriver(), Duration.ofSeconds(6));
-//        wait.until(ExpectedConditions.alertIsPresent());
+//        Selenide.sleep(6000);
+//        Selenide.Wait().until(ExpectedConditions.alertIsPresent());
 //
 //        String actualText = alertsPage.getTextFromAlert();
 //        alertsPage.confirmAlert();

@@ -1,11 +1,11 @@
 package org.example.tests;
 
+import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.List;
+
 
 public class DynamicTableTest extends BaseTest{
 
@@ -15,7 +15,7 @@ public class DynamicTableTest extends BaseTest{
 
         String expectedValue = dynamicTablePage.getCpuValue();
 
-        List<WebElement> actualHeaders = dynamicTablePage.getHeader();
+        ElementsCollection actualHeaders = dynamicTablePage.getHeader();
 
         int cpuIndext = 0;
 

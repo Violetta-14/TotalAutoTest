@@ -1,19 +1,18 @@
 package org.example.Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
+import static com.codeborne.selenide.Selenide.$x;
+
 
 public class AlertsPage extends BasePage{
 
-    By promptButton = By.xpath("//button[@id='promptButton']");
-    By confirmButton = By.xpath("//button[@id='confirmButton']");
+    SelenideElement promptButton = $x("//button[@id='promptButton']");
+    SelenideElement confirmButton = $x("//button[@id='confirmButton']");
 
     public void clickConfirmButton(){
-        driver.findElement(confirmButton).click();
+        confirmButton.click();
     }
 
     public static boolean checkFriday() {
@@ -24,30 +23,27 @@ public class AlertsPage extends BasePage{
     }
 
     public void clickPromptButton(){
-        driver.findElement(promptButton).click();
+        promptButton.click();
     }
 
     //для кнопки подтверждения (ок, принять и т.д)
     public void confirmAlert(){
-        driver.switchTo().alert().accept(); //перейти-на алерт-принять
+        Selenide.switchTo().alert().accept();
+        //перейти-на алерт-принять
     }
 
     //для пнопки отмены (отмена, назад и т.д)
     public void dismissAlert(){
-        driver.switchTo().alert().dismiss(); //перейти-на алерт-отменить
+        Selenide.switchTo().alert().dismiss(); //перейти-на алерт-отменить
     }
 
     //получить текст с алерта
     public String getTextFromAlert(){
-       return driver.switchTo().alert().getText();
+       return Selenide.switchTo().alert().getText();
     }
 
     //отпрвить текст в алерт
     public void setTextToAlert(String text){
-        driver.switchTo().alert().sendKeys(text);
-    }
-
-    public AlertsPage(WebDriver driver, Actions actions){
-        super(driver, actions);
+        Selenide.switchTo().alert().sendKeys(text);
     }
 }

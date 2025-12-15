@@ -1,6 +1,6 @@
 package org.example.tests;
 
-import org.example.Pages.MouseOverPage;
+import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +10,7 @@ public class MouseOverTest extends BaseTest{
 
     @Test
     public void mouseTest() throws IOException {
-        getWebDriver().get(runProperties.getProperty("baseUrl"));
+        Selenide.open(runProperties.getProperty("baseUrl")); //???????
 
         homePage.redirectToSection("Mouse Over");
 

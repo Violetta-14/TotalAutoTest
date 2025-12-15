@@ -1,8 +1,6 @@
 package org.example.Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class HomePage extends BasePage{
 
@@ -10,11 +8,7 @@ public class HomePage extends BasePage{
 
     public void redirectToSection(String sectionName){
 
-        driver.findElement(By.xpath(String.format(LINK_LOCATOR_PATTERN, sectionName))).click();
+       $x(String.format(LINK_LOCATOR_PATTERN, sectionName)).click();
 //        driver.findElement(By.xpath(LINK_LOCATOR_PATTERN.formatted(sectionName)));
-    }
-
-    public HomePage(WebDriver driver, Actions actions){
-        super(driver, actions);
     }
 }

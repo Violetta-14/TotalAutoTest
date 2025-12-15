@@ -1,10 +1,10 @@
 package org.example.homeTests;
 
+import com.codeborne.selenide.Selenide;
 import org.example.Pages.AlertsPage;
 import org.example.tests.BaseTest;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -26,8 +26,8 @@ public class HomeAlertsTest extends BaseTest {
             System.out.println("Today is not friday");
         }
 
-        WebDriverWait wait = new WebDriverWait(getWebDriver(), Duration.ofSeconds(6));
-        wait.until(ExpectedConditions.alertIsPresent());
+        Selenide.sleep(6000);
+        Selenide.Wait().until(ExpectedConditions.alertIsPresent());
 
         alertsPage.confirmAlert();
         System.out.println("End of test");

@@ -18,18 +18,11 @@
   </properties>
 
   <dependencies>
-      <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+      <!-- https://mvnrepository.com/artifact/com.codeborne/selenide -->
       <dependency>
-          <groupId>org.seleniumhq.selenium</groupId>
-          <artifactId>selenium-java</artifactId>
-          <version>4.38.0</version>
-      </dependency>
-
-      <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-      <dependency>
-          <groupId>io.github.bonigarcia</groupId>
-          <artifactId>webdrivermanager</artifactId>
-          <version>6.3.2</version>
+          <groupId>com.codeborne</groupId>
+          <artifactId>selenide</artifactId>
+          <version>7.12.3</version>
       </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -80,6 +73,14 @@
                       <version>${aspectj.version}</version>
                   </dependency>
               </dependencies>
+          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>13</source>
+                  <target>13</target>
+              </configuration>
           </plugin>
       </plugins>
   </build>
