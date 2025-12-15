@@ -1,19 +1,18 @@
 package org.example.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.example.Pages.AlertsPage;
-import org.example.Pages.HomePage;
-import org.example.Pages.MouseOverPage;
-import org.example.Pages.TextInputPage;
+import org.example.Pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 public class BaseTest {
@@ -24,18 +23,27 @@ public class BaseTest {
     protected MouseOverPage mouseOverPage = new MouseOverPage(getWebDriver(), getActions());
     protected AlertsPage alertsPage = new AlertsPage(getWebDriver(), getActions());
     protected TextInputPage textInputPage = new TextInputPage(getWebDriver(), getActions());
+    protected FileUploadPage fileUploadPage = new FileUploadPage(getWebDriver(), getActions());
+    protected DynamicTablePage dynamicTablePage = new DynamicTablePage(getWebDriver(), getActions());
 
     private static WebDriver driver;
     private static Actions actions;
 
     @BeforeClass
     public void openBasePage(){
+        try {
+            setProperties();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         driver.get(runProperties.getProperty("baseUrl"));
     }
 
-    @AfterMethod
+    @AfterSuite(alwaysRun = true)
     public void closeBrowser(){
         driver.quit();
+
     }
 
     public static WebDriver getWebDriver(){
@@ -58,11 +66,15 @@ public class BaseTest {
         }
     }
 
-    @BeforeSuite
-    public void setProperties() throws IOException {
+    private void setProperties() throws IOException {
         runProperties  = new Properties();
         FileInputStream fis = new FileInputStream("src/main/resources/properties.properties");
         runProperties.load(fis);
         fis.close();
+    }
+
+    public void switchToLastOpenTab(){
+        List<String> handles = driver.getWindowHandles().stream().toList();
+        driver.switchTo().window(handles.get(handles.size() - 1));
     }
 }
